@@ -1,3 +1,5 @@
+import { supabase } from './supabase.js';
+
 const formatoPrecio = new Intl.NumberFormat('es-AR', {
     style: 'currency',
     currency: 'ARS'
@@ -39,24 +41,35 @@ function crearTarjetaProducto(p) {
 }
 
 async function cargarProductos(contenedor) {
-    const consulta = contenedor.dataset.productos;
+    const filtros = new URLSearchParams(contenedor.dataset.productos);
 
-    try {
-        const respuesta = await fetch('../api/productos.php?' + consulta);
-        if (!respuesta.ok) throw new Error('Error ' + respuesta.status);
+    let consulta = supabase
+        .from('productos')
+        .select('id, nombre, precio, categoria, imagen, mas_vendido')
+        .order('id', { ascending: false });
 
-        const productos = await respuesta.json();
+    if (filtros.get('categoria')) {
+        consulta = consulta.eq('categoria', filtros.get('categoria'));
+    }
 
-        if (productos.length === 0) {
-            contenedor.textContent = 'Todavía no hay productos para mostrar.';
-            return;
-        }
+    if (filtros.has('mas_vendido')) {
+        consulta = consulta.eq('mas_vendido', true);
+    }
 
-        contenedor.replaceChildren(...productos.map(crearTarjetaProducto));
-    } catch (error) {
+    const { data, error } = await consulta;
+
+    if (error) {
         console.error(error);
         contenedor.textContent = 'No pudimos cargar los productos. Probá de nuevo en un rato.';
+        return;
     }
+
+    if (data.length === 0) {
+        contenedor.textContent = 'Todavía no hay productos para mostrar.';
+        return;
+    }
+
+    contenedor.replaceChildren(...data.map(crearTarjetaProducto));
 }
 
 document.querySelectorAll('[data-productos]').forEach(cargarProductos);

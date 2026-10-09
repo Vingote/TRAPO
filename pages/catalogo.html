@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAPO - Catálogo</title>
+
+    <link rel="stylesheet" href="../styles/master.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="marquee">
+        <div class="group">
+            <span>Envío gratis superando $100.000</span>
+            <span>5% OFF: ALUMINE</span>
+            <span>Envío a todo el país</span>
+        </div>
+        <div class="group" aria-hidden="true">
+            <span>Envío gratis superando $100.000</span>
+            <span>5% OFF: ALUMINE</span>
+            <span>Envío a todo el país</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-titulo-nav">
+            <a class="header-titulo" href="../index.html"><h2>TRAPO</h2></a>
+
+            <nav class="header-nav">
+                <ul>
+                    <li><a href="../index.html">INICIO</a></li>
+                    <li><a class="activo" href="./catalogo.html">CATALOGO</a></li>
+                    <li><a href="./jeans.html">JEANS</a></li>
+                    <li><a href="./remeras.html">REMERAS</a></li>
+                    <li><a href="./buzos.html">BUZOS</a></li>
+                    <li><a href="./accesorios.html">ACCESORIOS</a></li>
+                    <li><a href="#">NOSOTROS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <a class="header-carrito" href="#" aria-label="Carrito, 0 productos">
+            <span class="header-carrito-caja">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cant-productos-carrito">0</span>
+            </span>
+        </a>
+    </header>
+
+    <main>
+        <section id="catalogo">
+            <h2 class="seccion-titulo">CATÁLOGO</h2>
+
+            <div class="productos-catalogo-container" data-productos=""></div>
+        </section>
+    </main>
+
+    <script src="../scripts/master.js"></script>
+    <script src="../scripts/productos.js"></script>
+</body>
+</html>

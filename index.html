@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRAPO</title>
+
+    <link rel="stylesheet" href="./styles/master.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="marquee">
+        <div class="group">
+            <span>Envío gratis superando $100.000</span>
+            <span>5% OFF: ALUMINE</span>
+            <span>Envío a todo el país</span>
+        </div>
+        <div class="group" aria-hidden="true">
+            <span>Envío gratis superando $100.000</span>
+            <span>5% OFF: ALUMINE</span>
+            <span>Envío a todo el país</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-titulo-nav">
+            <a class="header-titulo" href="./index.html"><h2>TRAPO</h2></a>
+
+            <nav class="header-nav">
+                <ul>
+                    <li><a class="activo" href="./index.html">INICIO</a></li>
+                    <li><a href="./pages/catalogo.html">CATALOGO</a></li>
+                    <li><a href="./pages/jeans.html">JEANS</a></li>
+                    <li><a href="./pages/remeras.html">REMERAS</a></li>
+                    <li><a href="./pages/buzos.html">BUZOS</a></li>
+                    <li><a href="./pages/accesorios.html">ACCESORIOS</a></li>
+                    <li><a href="#">NOSOTROS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <a class="header-carrito" href="#" aria-label="Carrito, 0 productos">
+            <span class="header-carrito-caja">
+                <i class="fa-solid fa-cart-shopping"></i>
+                <span class="cant-productos-carrito">0</span>
+            </span>
+        </a>
+    </header>
+
+    <main>
+        <section id="hero">
+            <div class="hero-contenido">
+                <h1>
+                    Ropa que <br><span class="resaltado">dura</span>,<br>
+                    colores <br><span class="resaltado">suaves</span>.
+                </h1>
+
+                <p class="hero-texto">
+                    Remeras, buzos y jeans de corte recto y colores suaves.
+                    Envío a todo el país.
+                </p>
+
+                <a class="hero-btn" href="./pages/catalogo.html">
+                    <p>VER CATALGO</p>
+                </a>
+            </div>
+
+            <div class="hero-visual">
+                <div class="hero-foto">
+                    <img src="./assets/imagenes/baggy-coffe/baggy-coffe-2.webp" alt="">
+                </div>
+                <div class="hero-sticker">5% OFF</div>
+                <div class="hero-precio">JEAN BAGGY COFFEE<br>$43.199,00</div>
+            </div>
+        </section>
+
+        <section id="mas-vendido">
+            <h2 class="seccion-titulo">LO MÁS VENDIDO</h2>
+
+            <div class="mas-vendido-container" data-productos="mas_vendido=1"></div>
+        </section>
+
+        <section id="clientes">
+            <h2 class="seccion-titulo">NUESTROS CLIENTES</h2>
+
+            <div class="clientes-container" data-clientes></div>
+        </section>
+    </main>
+
+    <script src="./scripts/master.js"></script>
+    <script src="./scripts/productos.js"></script>
+    <script src="./scripts/clientes.js"></script>
+</body>
+</html>

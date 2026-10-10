@@ -16,9 +16,18 @@ function crearTarjetaProducto(p) {
     const producto = crearElementoProducto('div', 'producto');
     const card = crearElementoProducto('div', 'card-producto');
 
+    const enlaceImagen = document.createElement('a');
+    enlaceImagen.href = `/pages/producto.html?id=${p.id}`;
+
     const imagen = crearElementoProducto('img');
     imagen.src = p.imagen;
     imagen.alt = p.nombre;
+    enlaceImagen.append(imagen);
+
+    const enlaceTitulo = document.createElement('a');
+    enlaceTitulo.href = `./producto.html?id=${p.id}`;
+    enlaceTitulo.className = 'producto-enlace';
+    enlaceTitulo.append(crearElementoProducto('h4', 'producto-nombre', p.nombre));
 
     const contenido = crearElementoProducto('div', 'producto-contenido');
 
@@ -31,10 +40,14 @@ function crearTarjetaProducto(p) {
     const boton = crearElementoProducto('button', 'agregar-carrito-btn');
     boton.type = 'button';
     boton.append(crearElementoProducto('span', '', 'AGREGAR AL CARRITO'));
-    boton.addEventListener('click', () => actualizarCarrito(1));
+    boton.addEventListener('click', (e) => {
+        e.stopPropagation();
+        actualizarCarrito(1);
+    });
 
-    contenido.append(crearElementoProducto('h4', 'producto-nombre', p.nombre), precios, boton);
-    card.append(imagen, contenido);
+    contenido.append(enlaceTitulo, precios, boton);
+    
+    card.append(enlaceImagen, contenido);
     producto.append(card);
 
     return producto;
@@ -46,7 +59,7 @@ async function cargarProductos(contenedor) {
     let consulta = supabase
         .from('productos')
         .select('id, nombre, precio, categoria, imagen, mas_vendido')
-        .order('id', { ascending: false });
+        .order('categoria', { ascending: false });
 
     if (filtros.get('categoria')) {
         consulta = consulta.eq('categoria', filtros.get('categoria'));
